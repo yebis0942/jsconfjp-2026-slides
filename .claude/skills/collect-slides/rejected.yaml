@@ -1,0 +1,98 @@
+# 採用を見送ったポスト。ここにある tweet ID は dump.js の出力から除外される（SKILL.md 手順 1・3）。
+#
+# 記録するのは、状況が変わっても判断が変わらないものだけ。
+#   - スライドではない（参照リンク、デモ、告知、ブログ記事）
+#   - 古い資料
+#   - 同じ URL がすでに index.html に掲載済み
+# 「登壇者以外による紹介ポスト」は、本人の投稿が後から見つからなければ採用し得るので記録しない。
+#
+# dump.js の IGNORE_DOMAINS で落ちるもの（jsconf.jp、YouTube、MDN、GitHub など）は書かなくてよい。
+#
+# 形式: grep -o 'tweet: "[0-9]*"' で ID を抜けるよう、tweet は必ず 1 行で "..." で囲む。
+
+# --- 2026-11-22 18:55 JST 収集分 ---
+
+- tweet: "2124261601830469660"
+  user: findy_code
+  url: https://tech.findy.co.jp/entry/2026/11/22/070000
+  reason: 企業ブログの告知（登壇者本人の資料ポストは別途掲載済み）
+- tweet: "2124308824014381107"
+  user: bicstone_me
+  url: https://tech.findy.co.jp/entry/2026/11/22/070000
+  reason: 掲載済みトークの解説記事（スライドは掲載済み）
+- tweet: "2124322577871151501"
+  user: riya_amemiya
+  url: https://speakerdeck.com/riyaamemiya/slides-export-07497c87-919a-4f35-a8c8-b76a91ba3417
+  reason: 掲載済み（英語版スライドとして yuta-nishi に載っている）
+- tweet: "2124435268807909419"
+  user: dynamitter
+  url: https://speakerdeck.com/dynamis/welcome-jxl
+  reason: 掲載済み
+- tweet: "2124380532138299757"
+  user: LayerX
+  url: https://www.docswell.com/s/Neri78/5LLPL9-2024-01-20-ReBAC
+  reason: 2024 年の資料
+- tweet: "2124310646426845397"
+  user: gggooottto
+  url: https://jpeg.org/jpegxl/
+  reason: 発表中の参照リンク
+- tweet: "2124324813493997909"
+  user: R0u9h
+  url: https://dojotoolkit.org
+  reason: 発表中の参照リンク
+- tweet: "2124370694280720887"
+  user: kzhrk0430
+  url: https://ingenui-demo.uhyo.workers.dev
+  reason: デモサイト
+- tweet: "2124371443878429002"
+  user: yamanoku
+  url: https://fedify.dev
+  reason: 発表中の参照リンク
+- tweet: "2124372007068574013"
+  user: kzhrk0430
+  url: https://json-render.dev
+  reason: 発表中の参照リンク
+- tweet: "2124378773592375343"
+  user: slmhina
+  url: https://jsconf-qa.arkor.app
+  reason: ライブ QA ツール
+- tweet: "2124380457467068916"
+  user: igrep
+  url: https://openfga.dev
+  reason: 発表中の参照リンク
+- tweet: "2124381460593610899"
+  user: HTNCode
+  url: https://openfga.dev
+  reason: 発表中の参照リンク
+- tweet: "2124383188797837400"
+  user: _mooriii
+  url: https://permify.co
+  reason: 参加者の感想と参照リンク
+- tweet: "2124388672925814864"
+  user: R0u9h
+  url: https://ark-ui.com/images/architecture_light.svg
+  reason: 発表中の参照リンク
+- tweet: "2124391613464186967"
+  user: yuya_presto
+  url: https://memo.willnet.in/entry/2026/11/04/142410
+  reason: 発表の補足として紹介した他者のブログ記事
+- tweet: "2124397920082383344"
+  user: R0u9h
+  url: https://sosukesuzuki.dev/advent/2022/06/
+  reason: 発表中の参照リンク
+- tweet: "2124402512572903528"
+  user: yuya_presto
+  url: https://tech.layerx.co.jp/entry/bakuraku-monorepo-and-frontend-enabling
+  reason: 発表の補足として紹介した企業ブログ記事
+- tweet: "2124420460498854339"
+  user: shisama_
+  url: https://flatt.tech/takumi/features/guard/
+  reason: 製品ページ
+- tweet: "2124431741058490817"
+  user: kzhrk0430
+  url: https://csp-evaluator.withgoogle.com
+  reason: 発表中の参照リンク
+- tweet: "2124439709883724227"
+  user: kzhrk0430
+  url: https://ag-grid.com
+  reason: 発表中の参照リンク

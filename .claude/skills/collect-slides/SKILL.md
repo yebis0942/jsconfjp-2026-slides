@@ -19,10 +19,11 @@ X はログインが必要なので、ユーザーの Chrome（Claude in Chrome�
 
 ### 1. 既存データの確認
 
-`index.html` の `talks` 配列から、掲載済みの `tweet`（ポスト ID）と `slug` を控える。
+`index.html` の `talks` 配列に掲載済みのポスト ID と、`rejected.yaml`（この SKILL.md と同じディレクトリ）に記録した見送り済みのポスト ID を控える。
+どちらも手順 3 で dump の出力から除外する。
 
 ```sh
-grep -o 'tweet: "[0-9]*"' index.html | grep -o '[0-9]*'
+grep -oh 'tweet: "[0-9]*"' index.html .claude/skills/collect-slides/rejected.yaml | grep -o '[0-9]*' | sort -u
 ```
 
 ### 2. X を検索して収集
@@ -43,10 +44,14 @@ grep -o 'tweet: "[0-9]*"' index.html | grep -o '[0-9]*'
 ### 3. 結果を読み出す
 
 `javascript_tool` の戻り値は約 1000 文字で切り詰められるので、そのまま返さない。
-まず `window.__since = 'SINCE'; window.__known = [手順1のIDの配列];` を実行し、続けて `scripts/dump.js` を実行する。
+まず `window.__since = 'SINCE'; window.__known = [手順1のIDの配列（掲載済み＋見送り済み）];` を実行し、続けて `scripts/dump.js` を実行する。
 これでページ本文が 1 リンク 1 行の一覧に置き換わるので、`get_page_text` で読む。
 
 行の形式: `@user|tweetId|MM-DDTHH:MM(UTC)|t.coコード|カードタイトル|本文中の表示URL|本文先頭`
+
+dump.js は `IGNORE_DOMAINS`（jsconf.jp、YouTube、connpass、MDN、GitHub、npm など）へのリンクを出力しない。
+除外した件数は戻り値の `skipped by domain` に出る。取りこぼしを疑うときは `window.__showAll = true` を付けて実行し直す。
+毎回同じ理由で落とすドメインが出てきたら、`rejected.yaml` に個別に書くより `IGNORE_DOMAINS` に足す。
 
 ### 4. スライドを選別する
 
@@ -81,13 +86,25 @@ slug は登壇者名から推測できないことがある（例: @riya_amemiya
 - 英語のトークには `lang: "English"` を付ける。
 - フッターの「〇〇 JST 時点」の日時を、今回の収集時刻に更新する。
 
-### 7. 確認と公開
+### 7. 見送りの記録
+
+手順 4 で採用しなかったポストのうち、状況が変わっても判断が変わらないものを `rejected.yaml` に追記する。
+次回からは dump に出なくなる。
+
+- 記録する: スライドではないリンク（参照リンク、デモ、告知、ブログ記事）、古い資料、同じ URL がすでに掲載済みのもの
+- 記録しない: 登壇者以外による紹介ポスト（本人の投稿が後から見つからなければ採用し得る）、トークを特定できず判断を保留したもの
+- `IGNORE_DOMAINS` で落ちたものは書かなくてよい
+
+既存エントリと同じ形（`tweet` / `user` / `url` / `reason`）で、収集日時のコメントの下にまとめる。`tweet` は必ず `"..."` で囲んで 1 行に書く（手順 1 の grep で読むため）。
+手順 8 で `index.html` と一緒にコミットする。
+
+### 8. 確認と公開
 
 1. `python3 -m http.server 8765 --bind 127.0.0.1` をバックグラウンドで起動し、Chrome で `http://127.0.0.1:8765/` を開いてスクリーンショットで表示を確認する（Chrome 拡張では `file://` は開けない）。
 2. 確認が済んだらタブを閉じ、サーバーを止める。
-3. `index.html` をコミットして `main` に push する。GitHub Pages（https://yebis0942.github.io/jsconfjp-2026-slides/）は push で自動更新される。
+3. `index.html` と `rejected.yaml` をコミットして `main` に push する。GitHub Pages（https://yebis0942.github.io/jsconfjp-2026-slides/）は push で自動更新される。
    `gh api repos/yebis0942/jsconfjp-2026-slides/pages/builds/latest --jq .status` が `built` になったら、`curl` で公開ページに反映されたことを確かめる。
 
-### 8. 報告
+### 9. 報告
 
 追加したトーク（タイトル・登壇者）、採用を見送ったリンクとその理由、時間やトラックを特定できなかったものを伝える。
