@@ -96,3 +96,18 @@
   user: kzhrk0430
   url: https://ag-grid.com
   reason: 発表中の参照リンク
+
+# --- 2026-11-22 23:43 JST 収集分 ---
+
+- tweet: "2124443154992795789"
+  user: yuya_presto
+  url: https://tech.layerx.co.jp/entry/bakuraku-monorepo-and-frontend-enabling
+  reason: 発表の補足として紹介した企業ブログ記事と求人ページ
+- tweet: "2124444874535833722"
+  user: kzhrk0430
+  url: https://fx.sh
+  reason: 発表中の参照リンク（ツール紹介）
+- tweet: "2124447059050909863"
+  user: nisshi_dev
+  url: https://flatt.tech/takumi/features/guard/
+  reason: 製品ページ（見送り済みの shisama_ の投稿と同じ URL）
