@@ -13,5 +13,7 @@ for p in "$@"; do
   title=$(printf '%s' "$html" | grep -o '<title>[^<]*' | head -1 | sed 's/<title>//; s/ | JSConf JP 2026$//')
   slot=$(printf '%s' "$html" | sed 's/<[^>]*>/\n/g' | sed 's/^[[:space:]]*//' | grep -v '^$' |
     awk '/^[0-9]{1,2}:[0-9]{2}$/ && !f {f=1} f && n<6 {printf "%s ", $0; n++}')
-  printf '%s\t%s\t%s\n' "$p" "$title" "$slot"
+  speakers=$(printf '%s' "$html" | grep -o '\\"h3\\",null,{\\"className\\":\\"text-2xl font-bold\\",\\"children\\":\\"[^\\]*' |
+    sed 's/.*children\\":\\"//' | paste -sd '/' -)
+  printf '%s\t%s\t%s\t%s\n' "$p" "$title" "$slot" "$speakers"
 done

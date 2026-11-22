@@ -64,8 +64,10 @@ grep -o 'tweet: "[0-9]*"' index.html | grep -o '[0-9]*'
 ```sh
 sh scripts/resolve-tco.sh CODE1 CODE2 ...        # t.co → 実 URL
 sh scripts/talk-info.sh --list                   # 公式の全トーク slug
-sh scripts/talk-info.sh SLUG1 SLUG2 ...          # タイトル・時間・種別・トラック
+sh scripts/talk-info.sh SLUG1 SLUG2 ...          # タイトル・時間・種別・トラック・登壇者名
 ```
+
+`speaker` には公式ページの登壇者名か X の表示名を使う。slug のローマ字から漢字表記を推測しないこと。
 
 slug は登壇者名から推測できないことがある（例: @riya_amemiya → `yuta-nishi`）。
 見つからないときは `sh scripts/talk-info.sh $(sh scripts/talk-info.sh --list) | grep キーワード` で全トークのタイトルから探す。
