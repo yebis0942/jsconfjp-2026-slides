@@ -72,6 +72,8 @@
     background: var(--surface); border: 1px solid var(--border);
     padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
   }
+  .card.none { opacity: .55; background: transparent; border-style: dashed; }
+  .card.none .nodata { font-size: 12px; color: var(--muted); padding: 5px 0; }
   .card[data-track="A"] { --track: var(--track-a); }
   .card[data-track="B"] { --track: var(--track-b); }
   .card[data-track="C"] { --track: var(--track-c); }
@@ -111,7 +113,7 @@
   <main id="list"></main>
 
   <footer>
-    <p>2026-11-22 18:10 JST 時点で X の検索結果から収集しました。公式スケジュールの全70トークのうち、資料リンクが見つかったものだけを載せています。時間・トラックは <a href="https://jsconf.jp/2026/ja/schedule">公式スケジュール</a> に基づきます。</p>
+    <p>2026-11-22 18:10 JST 時点で X の検索結果から収集しました。公式スケジュールの全70トークを載せ、資料リンクが見つかっていないものはグレーアウトで「スライド未検出」と表示しています。時間・トラックは <a href="https://jsconf.jp/2026/ja/schedule">公式スケジュール</a> に基づきます。</p>
   </footer>
 </div>
 
@@ -183,9 +185,53 @@ const talks = [
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/kinocoboy2/jsconf2026" }] },
   { time: "17:30", end: "18:00", track: "D", type: "スポンサー", title: "useReducerで実現する、堅牢で拡張可能なスプシ風コンポーネント設計", speaker: "0e2b3c（LayerX）", x: "0e2b3c", slug: "layerx-sponsor-session", tweet: "2124406631312351711",
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/arfes0e2b3c/jsconf2026-yata" }] },
-  { time: null, track: null, type: "スポンサー", title: "デザインシステムのフィードバックループをほぼ自動化した話", speaker: "とんがり（マネーフォワード）", x: "tongari07", slug: null, tweet: "2124319306884497862",
+  { time: "18:30", end: "18:35", track: "A", type: "スポンサー", title: "デザインシステムのフィードバックループをほぼ自動化した話", speaker: "とんがり（マネーフォワード）", x: "tongari07", slug: "money-forward-sponsor-lt", tweet: "2124319306884497862",
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/tongari07/dezain-shisutemu-no-fidobakku-rupu-o-hobo-jidouka-shita-hanashi" }] },
+  {"time": "13:30", "end": "14:00", "track": "C", "type": "セッション", "title": "AIがコードを書く時代、JavaScript開発者は何を書くのか？", "speaker": "Aileen Villanueva", "slug": "aileen-villanueva", "lang": "English", "slides": []},
+  {"time": "10:10", "end": "10:20", "track": "A", "type": "LT", "title": "AIエージェントによるフロントエンドのパフォーマンス最適化の自動化", "speaker": "Ajay Upreti", "slug": "ajay-upreti", "lang": "English", "slides": []},
+  {"time": "11:50", "end": "11:55", "track": "A", "type": "スポンサー", "title": "オレ達が戦ってきたOOMの正体の話をしよう", "speaker": "AnotherBall Pte Ltd", "slug": "anotherball-sponsor-lt-1", "slides": []},
+  {"time": "13:30", "end": "14:00", "track": "D", "type": "スポンサー", "title": "Slackエージェントが動き続けるVTuber配信アプリの裏側", "speaker": "AnotherBall Pte Ltd", "slug": "anotherball-sponsor-session", "slides": []},
+  {"time": "18:10", "end": "18:15", "track": "A", "type": "スポンサー", "title": "正しくWeb サイトを守るためのコンテンツセキュリティーポリシー", "speaker": "Arkor", "slug": "arkor-sponsor-lt", "slides": []},
+  {"time": "14:40", "end": "15:10", "track": "D", "type": "スポンサー", "title": "なぜ、ArkorのWebアプリは一瞬で動くのか？先読みとキャッシュの舞台裏", "speaker": "Arkor", "slug": "arkor-sponsor-session", "slides": []},
+  {"time": "11:00", "end": "11:45", "track": "A", "type": "キーノート", "title": "Brendan Eich インタビュー — JavaScript生誕30周年の振り返りとこれから", "speaker": "Brendan Eich", "slug": "brendan-eich", "lang": "English", "slides": []},
+  {"time": "18:50", "end": "18:55", "track": "A", "type": "スポンサー", "title": "同僚のレイチェルを紹介します ── 7,000店舗で働くAIのプロダクト開発", "speaker": "クーガー株式会社", "slug": "cougar-sponsor-lt", "slides": []},
+  {"time": "17:00", "end": "17:30", "track": "C", "type": "スポンサー", "title": "同僚のレイチェルを紹介します ── 7,000店舗で働くAIのプロダクト開発", "speaker": "クーガー株式会社", "slug": "cougar-sponsor-session", "slides": []},
+  {"time": "11:55", "end": "12:00", "track": "A", "type": "スポンサー", "title": "jsperf の「速い書き方」は今も速いのか測ってみた", "speaker": "サイボウズ株式会社", "slug": "cybozu-sponsor-lt-1", "slides": []},
+  {"time": "18:15", "end": "18:20", "track": "A", "type": "スポンサー", "title": "縦書きWebの周辺状況 2026", "speaker": "株式会社ドワンゴ", "slug": "dwango-sponsor-lt", "slides": []},
+  {"time": "15:20", "end": "15:50", "track": "B", "type": "セッション", "title": "ブラウザで変わるID連携 — EVPとFedCMが描く未来の認証", "speaker": "えーじ", "slug": "eiji", "slides": []},
+  {"time": "18:40", "end": "18:45", "track": "A", "type": "スポンサー", "title": "Generative UIに学ぶ、リアルタイムに更新されるテーブル基盤のすすめ", "speaker": "株式会社enechain", "slug": "enechain-sponsor-lt", "slides": []},
+  {"time": "15:50", "end": "16:20", "track": "C", "type": "スポンサー", "title": "認証基盤の内製化に伴うフロントエンド開発について", "speaker": "株式会社enechain", "slug": "enechain-sponsor-session", "slides": []},
+  {"time": "19:05", "end": "19:10", "track": "A", "type": "スポンサー", "title": "AIにスキルシートを書かせる前に、知っておきたいこと。", "speaker": "株式会社EVERLANE", "slug": "everlane-sponsor-lt", "slides": []},
+  {"time": "19:00", "end": "19:05", "track": "A", "type": "スポンサー", "title": "「脆弱性」と「悪性」に同時に立ち向かう、現代のプロダクトセキュリティ", "speaker": "GMO Flatt Security株式会社", "slug": "gmo-flatt-security-sponsor-lt", "slides": []},
+  {"time": "17:30", "end": "18:00", "track": "B", "type": "スポンサー", "title": "npmパッケージの全量解析から学ぶソフトウェアサプライチェーン攻撃の実態と、開発者・メンテナ観点の守り方", "speaker": "GMO Flatt Security株式会社", "slug": "gmo-flatt-security-sponsor-session", "slides": []},
+  {"time": "13:00", "end": "13:30", "track": "A", "type": "セッション", "title": "HTML-in-Canvas APIで次世代のUIを構築する", "speaker": "Natalia Markoborodova/Thomas Nattestad", "slug": "html-in-canvas-api", "lang": "English", "slides": []},
+  {"time": "16:30", "end": "17:00", "track": "A", "type": "セッション", "title": "あなたはすでにハッキングされている。まだ気づいていないだけだ。", "speaker": "Itai Satati", "slug": "itai-satati", "lang": "English", "slides": []},
+  {"time": "17:30", "end": "18:00", "track": "A", "type": "セッション", "title": "あなたのNode.jsアプリは嘘をついている：axiosから学んだこと", "speaker": "Jessie", "slug": "jessie", "lang": "English", "slides": []},
+  {"time": "19:20", "end": "19:50", "track": "B", "type": "キーノート", "title": "基調講演2：そう、私はハッキングされた——被害から学んだこと", "speaker": "Josh Junon", "slug": "josh-junon", "lang": "English", "slides": []},
+  {"time": "15:20", "end": "15:50", "track": "A", "type": "セッション", "title": "WebMCPとWebAI：ChromeのネイティブAIツールを探る", "speaker": "Kevin Uehara", "slug": "kevin-uehara", "lang": "English", "slides": []},
+  {"time": "18:35", "end": "18:40", "track": "A", "type": "スポンサー", "title": "ariaNotify()で届けるAIチャットの当たり前品質", "speaker": "株式会社LayerX", "slug": "layerx-sponsor-lt", "slides": []},
+  {"time": "18:25", "end": "18:30", "track": "A", "type": "スポンサー", "title": "リリースしたで終わらない。観測できるフロントエンド開発", "speaker": "株式会社Linc'well", "slug": "lincwell-sponsor-lt", "slides": []},
+  {"time": "14:10", "end": "14:40", "track": "A", "type": "セッション", "title": "Node.jsの設定に欠けているもの", "speaker": "Marco Ippolito", "slug": "marco-ippolito", "lang": "English", "slides": []},
+  {"time": "12:00", "end": "12:05", "track": "A", "type": "スポンサー", "title": "MCD3の開発を5分でのぞいてみる", "speaker": "エムシーディースリー株式会社", "slug": "mcd3-sponsor-lt", "slides": []},
+  {"time": "11:45", "end": "11:50", "track": "A", "type": "スポンサー", "title": "AIが作ったLP、ビルド後まで見ていますか？", "speaker": "ミイダス株式会社", "slug": "miidas-sponsor-lt-1", "slides": []},
+  {"time": "13:00", "end": "13:30", "track": "D", "type": "スポンサー", "title": "LPをAI駆動開発するまでに得た反省と知見", "speaker": "ミイダス株式会社", "slug": "miidas-sponsor-session", "slides": []},
+  {"time": "17:00", "end": "17:30", "track": "D", "type": "スポンサー", "title": "4LT Mix: 自然言語起点のE2Eテスト基盤 / AI時代のドメイン固有UIレイヤー / 93-Field Dynamic Form / Rails to Next.js Without a Big Bang", "speaker": "株式会社マネーフォワード", "slug": "money-forward-sponsor-session", "slides": []},
+  {"time": "18:45", "end": "18:50", "track": "A", "type": "スポンサー", "title": "フルTypeScript × AI駆動開発で開発量が数倍に。「書く」より「決める」エンジニアへ", "speaker": "NCDC株式会社", "slug": "ncdc-sponsor-lt", "slides": []},
+  {"time": "16:30", "end": "17:00", "track": "C", "type": "スポンサー", "title": "一人フロントエンド。Agentが全コードを書く時代の治安維持戦略", "speaker": "NCDC株式会社", "slug": "ncdc-sponsor-session", "slides": []},
+  {"time": "17:00", "end": "17:30", "track": "A", "type": "セッション", "title": "TanStack Queryの間違った使い方", "speaker": "Neciu Dan", "slug": "neciu-dan", "lang": "English", "slides": []},
+  {"time": "13:30", "end": "14:00", "track": "A", "type": "セッション", "title": "npm installでコンパイルさせない：ネイティブアドオンをなくす", "speaker": "Neeraj Pandey", "slug": "neeraj-pandey", "lang": "English", "slides": []},
+  {"time": "13:00", "end": "13:30", "track": "B", "type": "セッション", "title": "CVEから紐解くJIT Exploit", "speaker": "nolu", "slug": "nolu", "slides": []},
+  {"time": "10:20", "end": "10:30", "track": "A", "type": "LT", "title": "TC39の墓場：JavaScriptを生かすために消えていった提案たち", "speaker": "Nurul Sundarani", "slug": "nurul-sundarani", "lang": "English", "slides": []},
+  {"time": "14:40", "end": "15:10", "track": "A", "type": "セッション", "title": "あなたがやるはずのないJavaScriptのミス10選", "speaker": "Ondřej Žára", "slug": "ondrej-zara", "lang": "English", "slides": []},
+  {"time": "15:50", "end": "16:20", "track": "B", "type": "セッション", "title": "Node.jsで覗くV8バイトコード：3つのJavaScript実験", "speaker": "ローランド リチャード", "slug": "roland-richard", "slides": []},
+  {"time": "15:50", "end": "16:20", "track": "A", "type": "セッション", "title": "React Fiberの内部に迫る：内部スケジューラーがReactを形作る仕組み", "speaker": "Saman Abbasi", "slug": "saman-abaasi", "lang": "English", "slides": []},
+  {"time": "18:20", "end": "18:25", "track": "A", "type": "スポンサー", "title": "株式会社HelloCloud LT", "speaker": "株式会社HelloCloud", "slug": "supateam-sponsor-lt", "slides": []},
+  {"time": "18:55", "end": "19:00", "track": "A", "type": "スポンサー", "title": "VercelのLT", "speaker": "Vercel", "slug": "vercel-sponsor-lt", "lang": "English", "slides": []},
+  {"time": "17:30", "end": "18:00", "track": "C", "type": "スポンサー", "title": "Vercel Functionsの舞台裏", "speaker": "Vercel", "slug": "vercel-sponsor-session", "slides": []},
+  {"time": "10:20", "end": "10:30", "track": "C", "type": "LT", "title": "debug&gt; を待ってもダメだった — Node.jsのflaky testから学ぶ非同期処理の同期点", "speaker": "Yuya Inoue", "slug": "yuya-inoue", "slides": []},
 ];
+
+talks.sort((a, b) => (a.time || "99:99").padStart(5, "0").localeCompare((b.time || "99:99").padStart(5, "0")) || (a.track || "Z").localeCompare(b.track || "Z"));
 
 const TRACKS = ["すべて", "A", "B", "C", "D"];
 let currentTrack = "すべて";
@@ -204,13 +250,15 @@ function card(t) {
     t.time ? `<span class="chip">${t.time}–${t.end}</span>` : "",
     t.lang ? `<span class="chip">${esc(t.lang)}</span>` : "",
   ].join("");
-  const links = t.slides.map((s, i) =>
+  const none = !t.slides.length;
+  const links = none ? `<span class="nodata">スライド未検出</span>` : t.slides.map((s, i) =>
     `<a class="${i === 0 ? "primary" : ""}" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`
   ).join("") + `<a href="https://x.com/${t.x}/status/${t.tweet}" target="_blank" rel="noopener">告知ポスト</a>`;
-  return `<article class="card" data-track="${t.track || ""}">
+  const who = t.x ? `${esc(t.speaker)} · <a href="https://x.com/${t.x}" target="_blank" rel="noopener">@${esc(t.x)}</a>` : esc(t.speaker);
+  return `<article class="card${none ? " none" : ""}" data-track="${t.track || ""}">
     <div class="meta">${meta}</div>
     <h3>${titleHtml}</h3>
-    <div class="speaker">${esc(t.speaker)} · <a href="https://x.com/${t.x}" target="_blank" rel="noopener">@${esc(t.x)}</a></div>
+    <div class="speaker">${who}</div>
     <div class="links">${links}</div>
   </article>`;
 }
@@ -229,8 +277,8 @@ function render() {
   }
   $("#list").innerHTML = hits.length
     ? [...groups].map(([k, ts]) => `<section class="slot"><h2>${k}</h2><div class="cards">${ts.map(card).join("")}</div></section>`).join("")
-    : `<p class="empty">該当するスライドはありません</p>`;
-  $("#count").textContent = `${hits.length} / ${talks.length} 件`;
+    : `<p class="empty">該当するトークはありません</p>`;
+  $("#count").textContent = `スライドあり ${hits.filter((t) => t.slides.length).length} / ${hits.length} トーク`;
 }
 
 $("#filters").innerHTML = TRACKS.map((t) =>
