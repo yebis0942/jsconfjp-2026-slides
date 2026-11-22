@@ -111,3 +111,14 @@
   user: nisshi_dev
   url: https://flatt.tech/takumi/features/guard/
   reason: 製品ページ（見送り済みの shisama_ の投稿と同じ URL）
+
+# --- 2026-11-23 01:21 JST 収集分 ---
+
+- tweet: "2124448244910661688"
+  user: toyojuni
+  url: https://flatt.tech/takumi/features/guard/
+  reason: 製品ページ（見送り済みと同じ URL）
+- tweet: "2124481477970968634"
+  user: _mooriii
+  url: https://speakerdeck.com/arfes0e2b3c/jsconf2026-yata
+  reason: 第三者の紹介ポスト（同じスライドは掲載済み）

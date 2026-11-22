@@ -23,7 +23,7 @@ X はログインが必要なので、ユーザーの Chrome（Claude in Chrome�
 どちらも手順 3 で dump の出力から除外する。
 
 ```sh
-grep -oh 'tweet: "[0-9]*"' index.html .claude/skills/collect-slides/rejected.yaml | grep -o '[0-9]*' | sort -u
+grep -oh 'tweet"\?: "[0-9]*"' index.html .claude/skills/collect-slides/rejected.yaml | grep -o '[0-9]*' | sort -u
 ```
 
 ### 2. X を検索して収集
