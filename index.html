@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSConf JP 2026 スライドまとめ</title>
+<meta name="description" content="JSConf JP 2026（2026-11-22）の登壇資料リンク集。X（#jsconfjp）に投稿されたスライドを収集したもの。">
+<style>
+  :root {
+    --bg: #fbfaf6;
+    --surface: #ffffff;
+    --text: #1d1d1b;
+    --muted: #6b6a63;
+    --border: #e4e1d6;
+    --accent: #c9a400;
+    --accent-ink: #1d1d1b;
+    --chip: #f2efe4;
+    --link: #1a5fb4;
+    --track-a: #d9480f;
+    --track-b: #1971c2;
+    --track-c: #2f9e44;
+    --track-d: #9c36b5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161614;
+      --surface: #1f1f1c;
+      --text: #ecebe6;
+      --muted: #a3a197;
+      --border: #34332e;
+      --accent: #f7df1e;
+      --chip: #2a2925;
+      --link: #74a9f2;
+      --track-a: #ff8a50;
+      --track-b: #5aa9ff;
+      --track-c: #63d07a;
+      --track-d: #d07cf0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 40px 0 24px; border-bottom: 1px solid var(--border); }
+  .logo {
+    display: inline-block; background: var(--accent); color: #1d1d1b;
+    font-weight: 800; padding: 2px 10px; border-radius: 4px; font-size: 14px; letter-spacing: .04em;
+  }
+  h1 { margin: 12px 0 4px; font-size: clamp(24px, 5vw, 34px); line-height: 1.25; }
+  .lead { margin: 0; color: var(--muted); font-size: 14px; }
+  .controls {
+    position: sticky; top: 0; z-index: 1; background: var(--bg);
+    padding: 16px 0 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .controls input[type="search"] {
+    flex: 1 1 220px; min-width: 0; padding: 8px 12px; font: inherit; font-size: 15px;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text);
+  }
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .filters button {
+    font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  }
+  .filters button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .count { font-size: 13px; color: var(--muted); width: 100%; }
+  .slot { margin-top: 28px; }
+  .slot h2 { font-size: 15px; color: var(--muted); margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+  .cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
+    border-left: 4px solid var(--track, var(--border));
+  }
+  .card[data-track="A"] { --track: var(--track-a); }
+  .card[data-track="B"] { --track: var(--track-b); }
+  .card[data-track="C"] { --track: var(--track-c); }
+  .card[data-track="D"] { --track: var(--track-d); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; }
+  .chip { background: var(--chip); padding: 1px 8px; border-radius: 4px; color: var(--muted); }
+  .chip.track { color: var(--track); font-weight: 700; }
+  .card h3 { margin: 0; font-size: 16px; line-height: 1.45; }
+  .card h3 a { color: var(--text); text-decoration: none; }
+  .card h3 a:hover { text-decoration: underline; }
+  .speaker { font-size: 13px; color: var(--muted); }
+  .speaker a { color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .links a {
+    font-size: 13px; padding: 4px 10px; border-radius: 6px; text-decoration: none;
+    border: 1px solid var(--border); color: var(--link);
+  }
+  .links a.primary { background: var(--accent); color: #1d1d1b; border-color: var(--accent); font-weight: 600; }
+  .empty { padding: 40px 0; text-align: center; color: var(--muted); }
+  footer { margin: 48px 0 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="logo">JS</span>
+    <h1>JSConf JP 2026 スライドまとめ</h1>
+    <p class="lead">2026年11月22日開催の JSConf JP 2026 で、登壇者が X（#jsconfjp）に投稿した発表資料へのリンク集です。</p>
+  </header>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="タイトル・登壇者で検索" aria-label="検索">
+    <div class="filters" id="filters" role="group" aria-label="トラックで絞り込み"></div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <main id="list"></main>
+
+  <footer>
+    <p>2026-11-22 15:20 JST 時点で X の検索結果から収集しました。公式スケジュールの全70トークのうち、資料リンクが見つかったものだけを載せています。時間・トラックは <a href="https://jsconf.jp/2026/ja/schedule">公式スケジュール</a> に基づきます。</p>
+  </footer>
+</div>
+
+<script>
+const talks = [
+  { time: "10:10", end: "10:20", track: "B", type: "LT", title: "ワークフローからハーネスへ — Web フレームワークの作者たちが AI エージェントに向かう理由", speaker: "azukiazusa", x: "azukiazusa", slug: "azukiazusa", tweet: "2124313656691425507",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/azukiazusa1/slide-ca142a4a-9ec4-4750-91c1-07892c44a423" }] },
+  { time: "10:10", end: "10:20", track: "C", type: "LT", title: "Stage 3でも仕様は変わる。アプリケーション開発者のためのTC39プロセスの読み方", speaker: "おおいし", x: "bicstone_me", slug: "bicstone", tweet: "2124312767754887466",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/bicstone/tc39-stage3-spec-changes" }] },
+  { time: "10:10", end: "10:20", track: "D", type: "LT", title: "Welcome JXL! ー JPEG XL 復活の記録", speaker: "dynamis", x: "dynamitter", slug: "dynamis", tweet: "2124316668147188013",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/dynamis/welcome-jxl" }] },
+  { time: "10:20", end: "10:30", track: "B", type: "LT", title: "フロントエンドのテストカバレッジは 100% 強制がいい", speaker: "つじ", x: "t0daaay", slug: "keisuke-tsuji", tweet: "2124306870034641041",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/bengo4com/20261122-jsconfjp2026-coverage-100" }] },
+  { time: "10:20", end: "10:30", track: "D", type: "LT", title: "多様化する npm サプライチェーン攻撃: 多角的な備えという向き合い方", speaker: "progfay", x: "progfay", slug: "progfay", tweet: "2124317020594593838",
+    slides: [{ label: "Web", url: "https://progfay.github.io/diversified-npm-supply-chain-attack/" }] },
+  { time: "10:30", end: "10:40", track: "A", type: "LT", title: "あなたの言語をWasmGCなどにコンパイルする（Compiling Your Language to WasmGC & Friends）", speaker: "tanishiking", x: "tanishiking", slug: "rikito-taniguchi", tweet: "2124318550802481370", lang: "English",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/tanishiking/compiling-your-language-to-wasmgc-friends" }] },
+  { time: "10:30", end: "10:40", track: "B", type: "LT", title: "JavaScriptはシングルバイナリの夢を見るか", speaker: "ssssotaro", x: "ssssotaro", slug: "tomikawa-sotaro", tweet: "2124313927630901592",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/ssssota/javascript-ha-shinguru-bainari-no-yume-o-miru-ka" }] },
+  { time: "10:30", end: "10:40", track: "C", type: "LT", title: "Math.sumPreciseから学ぶ、ECMAScript仕様の数値の種類", speaker: "syumai", x: "__syumai", slug: "syumai", tweet: "2124315137494646935",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/syumai/slides-303885bd-9a9f-41a1-b9e5-04ac53bb041c" }] },
+  { time: "10:30", end: "10:40", track: "D", type: "LT", title: "esmeta: ECMAScript仕様書を読む機械", speaker: "yebis0942", x: "yebis0942", slug: "yebis0942", tweet: "2124315214195863915",
+    slides: [{ label: "Web", url: "https://yebis0942.github.io/jsconfjp-2026-esmeta-lt/" }] },
+  { time: "10:40", end: "10:50", track: "A", type: "LT", title: "Objectの比較と同一性を考える — ComparisonsからCompositesまで", speaker: "jiko21", x: "jiko_21", slug: "jiko21", tweet: "2124317827587019253",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/jiko21/jsconf2026" }] },
+  { time: "10:40", end: "10:50", track: "B", type: "LT", title: "Promiseの向こう側へコンテキストを届ける ― proposal-async-context", speaker: "seriseri", x: "seriseri_55", slug: "kazuya-serizawa", tweet: "2124315721341743512",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/seriseri/jsconf-2026-propsal-async-context-v2" }] },
+  { time: "10:40", end: "10:50", track: "C", type: "LT", title: "Canvas 2D Context Next", speaker: "petamoriken", x: "petamoriken", slug: "petamoriken", tweet: "2124311326222844145",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/petamoriken/canvas-2d-context-next" }] },
+  { time: "10:40", end: "10:50", track: "D", type: "LT", title: "Coding Agent のフロントエンドを、AsyncIterable と自作の pipe で宣言的に実装する", speaker: "Selria", x: "Selria1", slug: "yuta-ikeoku", tweet: "2124309806987288714",
+    slides: [{ label: "Docswell", url: "https://www.docswell.com/s/4136989/KJWDLE-jsconfjp2026" }] },
+  { time: "13:00", end: "13:30", track: "C", type: "セッション", title: "The Cost of the DOM ― jsdom / happy-dom とVitest Browser Modeの実行時間を分解する", speaker: "ypresto", x: "yuya_presto", slug: "ypresto", tweet: "2124350651065094300",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/ypresto/the-cost-of-the-dom" }] },
+  { time: "13:30", end: "14:00", track: "B", type: "セッション", title: "V8のArray.prototype.flatを最大約20倍速くするまでと、巨大OSSへの大規模コミットの道のり", speaker: "Amemiya Riya", x: "riya_amemiya", slug: "yuta-nishi", tweet: "2124320222303928767",
+    slides: [
+      { label: "Speaker Deck（日本語）", url: "https://speakerdeck.com/riyaamemiya/v8-no-array-prototype-flat-o-saitaiyaku-20-bai-hayaku-suru-madeto-kyodai-oss-heno-daikibo-komitto-no-michinori" },
+      { label: "Speaker Deck（English）", url: "https://speakerdeck.com/riyaamemiya/slides-export-07497c87-919a-4f35-a8c8-b76a91ba3417" }
+    ] },
+  { time: "14:10", end: "14:40", track: "B", type: "セッション", title: "AIフレンドリーなGenerative UIをJSXで", speaker: "uhyo", x: "uhyo_", slug: "uhyo", tweet: "2124368306958458949",
+    slides: [
+      { label: "Web", url: "https://uhyo.github.io/jsconfjp-202611/" },
+      { label: "Speaker Deck", url: "https://speakerdeck.com/uhyo/jsconfjp-2026-ingenui" }
+    ] },
+  { time: "14:10", end: "14:40", track: "C", type: "セッション", title: "Oseo：SBCLスタイルのJavaScript/TypeScript AOTコンパイラ", speaker: "洪 民憙 (Hong Minhee)", x: "hongminhee", slug: "hong-minhee", tweet: "2124386408450457903",
+    slides: [{ label: "Web", url: "https://hongminhee.codefloe.page/oseo-jsconf-jp-2026/" }] },
+  { time: "14:10", end: "14:40", track: "D", type: "スポンサー", title: "チームワークなどの「人間力」をAIの背中を見て学ぼう", speaker: "oguemon（サイボウズ）", x: "oguemon_com", slug: "cybozu-sponsor-session", tweet: "2124369692819386809",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/oguemon/learn-communication-skills-from-ai" }] },
+  { time: "15:20", end: "15:50", track: "C", type: "セッション", title: "JS･WasmにもあるRustのアレ - コンポーネント間でやりとりするオブジェクトを管理する", speaker: "YAMAMOTO Yuji (igrep)", x: "igrep", slug: "yuji-yamamoto", tweet: "2124385121214288071",
+    slides: [{ label: "Web", url: "https://the.igreque.info/slides/2026-11-22-ownership" }] },
+  { time: "15:20", end: "15:50", track: "D", type: "スポンサー", title: "Panda CSSにみる、ライブラリを直接importしないCSS in JSだからできること", speaker: "k8o（ドワンゴ）", x: "k8ome", slug: "dwango-sponsor-session", tweet: "2124386183845450026",
+    slides: [
+      { label: "Web", url: "https://k8o.me/talks/jsconf-jp-2026" },
+      { label: "Speaker Deck", url: "https://speakerdeck.com/k35o/panda-css-ni-miru-raiburari-o-chokusetsu-import-shinai-css-in-js-dakara-dekiru-koto-2" }
+    ] },
+  { time: null, track: null, type: "スポンサー", title: "デザインシステムのフィードバックループをほぼ自動化した話", speaker: "とんがり（マネーフォワード）", x: "tongari07", slug: null, tweet: "2124319306884497862",
+    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/tongari07/dezain-shisutemu-no-fidobakku-rupu-o-hobo-jidouka-shita-hanashi" }] },
+];
+
+const TRACKS = ["すべて", "A", "B", "C", "D"];
+let currentTrack = "すべて";
+const $ = (s) => document.querySelector(s);
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function card(t) {
+  const official = t.slug ? `https://jsconf.jp/2026/ja/talks/${t.slug}` : null;
+  const titleHtml = official ? `<a href="${official}">${esc(t.title)}</a>` : esc(t.title);
+  const meta = [
+    t.track ? `<span class="chip track">トラック${t.track}</span>` : "",
+    `<span class="chip">${esc(t.type)}</span>`,
+    t.time ? `<span class="chip">${t.time}–${t.end}</span>` : "",
+    t.lang ? `<span class="chip">${esc(t.lang)}</span>` : "",
+  ].join("");
+  const links = t.slides.map((s, i) =>
+    `<a class="${i === 0 ? "primary" : ""}" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`
+  ).join("") + `<a href="https://x.com/${t.x}/status/${t.tweet}" target="_blank" rel="noopener">告知ポスト</a>`;
+  return `<article class="card" data-track="${t.track || ""}">
+    <div class="meta">${meta}</div>
+    <h3>${titleHtml}</h3>
+    <div class="speaker">${esc(t.speaker)} · <a href="https://x.com/${t.x}" target="_blank" rel="noopener">@${esc(t.x)}</a></div>
+    <div class="links">${links}</div>
+  </article>`;
+}
+
+function render() {
+  const q = $("#q").value.trim().toLowerCase();
+  const hits = talks.filter((t) =>
+    (currentTrack === "すべて" || t.track === currentTrack) &&
+    (!q || [t.title, t.speaker, t.x].join(" ").toLowerCase().includes(q))
+  );
+  const groups = new Map();
+  for (const t of hits) {
+    const key = t.time ? `${t.time}–${t.end}` : "時間未確認";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(t);
+  }
+  $("#list").innerHTML = hits.length
+    ? [...groups].map(([k, ts]) => `<section class="slot"><h2>${k}</h2><div class="cards">${ts.map(card).join("")}</div></section>`).join("")
+    : `<p class="empty">該当するスライドはありません</p>`;
+  $("#count").textContent = `${hits.length} / ${talks.length} 件`;
+}
+
+$("#filters").innerHTML = TRACKS.map((t) =>
+  `<button type="button" data-t="${t}" aria-pressed="${t === currentTrack}">${t === "すべて" ? t : "トラック" + t}</button>`
+).join("");
+$("#filters").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  currentTrack = b.dataset.t;
+  document.querySelectorAll("#filters button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+$("#q").addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
