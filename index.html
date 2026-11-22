@@ -111,7 +111,7 @@
   <main id="list"></main>
 
   <footer>
-    <p>2026-11-22 15:20 JST 時点で X の検索結果から収集しました。公式スケジュールの全70トークのうち、資料リンクが見つかったものだけを載せています。時間・トラックは <a href="https://jsconf.jp/2026/ja/schedule">公式スケジュール</a> に基づきます。</p>
+    <p>2026-11-22 16:10 JST 時点で X の検索結果から収集しました。公式スケジュールの全70トークのうち、資料リンクが見つかったものだけを載せています。時間・トラックは <a href="https://jsconf.jp/2026/ja/schedule">公式スケジュール</a> に基づきます。</p>
   </footer>
 </div>
 
@@ -120,7 +120,10 @@ const talks = [
   { time: "10:10", end: "10:20", track: "B", type: "LT", title: "ワークフローからハーネスへ — Web フレームワークの作者たちが AI エージェントに向かう理由", speaker: "azukiazusa", x: "azukiazusa", slug: "azukiazusa", tweet: "2124313656691425507",
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/azukiazusa1/slide-ca142a4a-9ec4-4750-91c1-07892c44a423" }] },
   { time: "10:10", end: "10:20", track: "C", type: "LT", title: "Stage 3でも仕様は変わる。アプリケーション開発者のためのTC39プロセスの読み方", speaker: "おおいし", x: "bicstone_me", slug: "bicstone", tweet: "2124312767754887466",
-    slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/bicstone/tc39-stage3-spec-changes" }] },
+    slides: [
+      { label: "Speaker Deck", url: "https://speakerdeck.com/bicstone/tc39-stage3-spec-changes" },
+      { label: "解説記事", url: "https://tech.findy.co.jp/entry/2026/11/22/070000" }
+    ] },
   { time: "10:10", end: "10:20", track: "D", type: "LT", title: "Welcome JXL! ー JPEG XL 復活の記録", speaker: "dynamis", x: "dynamitter", slug: "dynamis", tweet: "2124316668147188013",
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/dynamis/welcome-jxl" }] },
   { time: "10:20", end: "10:30", track: "B", type: "LT", title: "フロントエンドのテストカバレッジは 100% 強制がいい", speaker: "つじ", x: "t0daaay", slug: "keisuke-tsuji", tweet: "2124306870034641041",
@@ -159,6 +162,8 @@ const talks = [
     slides: [{ label: "Web", url: "https://hongminhee.codefloe.page/oseo-jsconf-jp-2026/" }] },
   { time: "14:10", end: "14:40", track: "D", type: "スポンサー", title: "チームワークなどの「人間力」をAIの背中を見て学ぼう", speaker: "oguemon（サイボウズ）", x: "oguemon_com", slug: "cybozu-sponsor-session", tweet: "2124369692819386809",
     slides: [{ label: "Speaker Deck", url: "https://speakerdeck.com/oguemon/learn-communication-skills-from-ai" }] },
+  { time: "14:40", end: "15:10", track: "C", type: "スポンサー", title: "認証の先にあるAIセキュリティ: プロンプトに頼らない、エージェントの「意図」に基づく動的認可", speaker: "Neri78（Auth0）", x: "Neri78", slug: "auth0-sponsor-session", tweet: "2124393039145939378",
+    slides: [{ label: "Docswell", url: "https://www.docswell.com/s/Neri78/ZN76PR-fga-intent-based-authorization" }] },
   { time: "15:20", end: "15:50", track: "C", type: "セッション", title: "JS･WasmにもあるRustのアレ - コンポーネント間でやりとりするオブジェクトを管理する", speaker: "YAMAMOTO Yuji (igrep)", x: "igrep", slug: "yuji-yamamoto", tweet: "2124385121214288071",
     slides: [{ label: "Web", url: "https://the.igreque.info/slides/2026-11-22-ownership" }] },
   { time: "15:20", end: "15:50", track: "D", type: "スポンサー", title: "Panda CSSにみる、ライブラリを直接importしないCSS in JSだからできること", speaker: "k8o（ドワンゴ）", x: "k8ome", slug: "dwango-sponsor-session", tweet: "2124386183845450026",
