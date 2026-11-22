@@ -73,9 +73,8 @@
   .slot h2 { font-size: 15px; color: var(--muted); margin: 0 0 8px; font-variant-numeric: tabular-nums; }
   .cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
   .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border);
     padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
-    border-left: 4px solid var(--track, var(--border));
   }
   .card[data-track="A"] { --track: var(--track-a); }
   .card[data-track="B"] { --track: var(--track-b); }
